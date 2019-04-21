@@ -10,11 +10,17 @@ REVIEW_TOPIC is a intermediate table using foreign keys from TOPIC table and REV
 ASSIGNED table is also intermediate table, because the relationship between PAPER table and REVIEWER is M:N. 
 
 PAPER table has primary key Id which uniquely identify each paper and it is also auto incremented.
+
 AUTHOR table has primary key as EmailAddr which uniquely identify each author.
+
 TOPIC table has primary key Id which uniquely identify each topic and it is also auto incremented.
+
 REVIEWER table has primary key EmailAddr which uniquely identify each reviewer.
+
 REVIEWER_TOPIC table has two foreign keys: TopicId and ReviewerId. It helps to assign the same reviewer to multiple topics without violating integrity constraint.
+
 REVIEW table has primary key Id which uniquely identify each review and it is also auto incremented. It has two foreign keys: PaperId and ReviewerId. Review must have relationship with paper and reviewer, because without those two the review would not exist.
+
 ASSIGNED table has two foreign keys: PaperId and ReviewerId.
 
 POPULATING
