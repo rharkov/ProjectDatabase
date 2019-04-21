@@ -1,6 +1,8 @@
 # ProjectDatabase
 CS 623 Database Management Project Repository
 
+
+
 IMPLEMENTATION
 
 I have created a database CONFERENCE_REVIEW and then I create 7 tables (AUTHOR,TOPIC,REVIEWER,REVIEWER_TOPIC,REVIEW,ASSIGNED).
@@ -23,9 +25,14 @@ REVIEW table has primary key Id which uniquely identify each review and it is al
 
 ASSIGNED table has two foreign keys: PaperId and ReviewerId.
 
+
+
+
 POPULATING
 
 I have successfully populated each table with three instances. The data is not very realistic but it was done to understand how to populate the data. 
+
+
 
 CONCLUSION
 
