@@ -1,0 +1,27 @@
+This is README for project part 2.
+
+I have a Paper class which is Paper.java. In this paper class I have 5 methods: getPaperDetails, getReview, countPaper, addPaper and deleteAuthor. 
+First four lines in the Paper class is setting up the JDBC driver and delcaring the username and password so when we need to connect to database we will use declarations USER and PASS which are final so it remains unchanged. I do it outside the methods so I do not have to do with each method, will be cleaner code.
+
+getPaperDetails METHOD - gets a submitted paper's details by author's Primary key. Author primary key in AUTHOR relation is EmailAddr, so I put in this method as a parameter list authorEmail, so when a user uses this method the user will put email address of the paper and receive a row or rows of paper's details which are Paper Id, Paper Title, Paper Abstract, Author EmailAddr, Author FirstName and Author LastName. So firstly in the method I connect to database using Database URL and USER and PASS, then I create statement and write in a sql String a query. Then in a result set I execute the query and then I make a traversing loop which traverses throughout the result set of that query. The query SELECT(s) the appropriate attributes from PAPER and AUTHOR relations and INNER JOIN them on EmailAddr (PK in AUTHOR) and AuthorId (FK in PAPER).
+Then in a while loop I create if statement that will compare authorId from the result set traverse and the user input inside the parameter list of the method, if they equal I print appropriate to that authorId or EmailAddr paper details and I increment count variable which I declared in the start of the method. This count will be used to check if we found any records. Then when while traversing loop ends, there is an if statement that if count == 0 print not found, so if the records associated with EmailAddr was not found which will be known by checking if count was incremeneted it will print NOT FOUND to output. 
+Then bunch of exceptions which are required to run a programm.
+
+getReview METHOD- pulls out a review from the database based on the ID of the paper, so the ID of the paper has to be a parameter list for the method, because it's an input from the User. So in the start I initiate declare what is required and int count. Then I connect to the database and state the query and execute it. Then traversing through the result set of that query while loop. Inside while loop the individual records from each table is assigned. Then if statement which compares if paperId is equals to PaperId (which was put inside the parameter list by the user) then the method will print associated with that paperId row with appropriate records. I increment count inside that if statement.
+Outside the while loop if count is 0 that means that the paperId which was input by the user in parameter list was not found so it prints REVIEW NOT FOUND.
+Then bunch of exceptions which are required to run a programm.
+
+
+countPaper METHOD - this method counts all paper records and outputs a number of papers that are submitted/exist in the database.
+Firstly I declare count and stataments that are required. In the try I connect to the database and write the sql query which uses COUNT function of (Id) from PAPER relation and execute it. After executing I have while loop that traverses through all array which getsthe value in the first, only first column which is ID. Then I ouput the count of the papers.
+Then bunch of exceptions which are required to run a programm.
+
+
+addPaper METHOD - this method creates a new paper submission. In parameter list there are many user input required because how otherwise you will know what paper details are when you create a new paper submission, also in parameter list String author first name and last and authorEmail. The name won't be required if authors Email address already exists, but if its not it will be used to create a new Author with those.
+So after executing the select query I start the traversing through ResultSet while loop and inside I have an if statement which compares authorId (pulled from database) to authorEmail (input by user in parameter list) if they are the same the count will increment. Next if statement compares if count more than 0 it will just INSERT a new paper record using the paper details which were put by the user in parameter list. Then I execute the update for the database and break the loop.
+If the loop did not break the else if condition compares if count is 0 which is by default, this will indicate that the authorEmail or EmailAddr (AUTHOR relation) does not exist so we will need to create a new Author using the parameter list inputs and then only INSERT a new paper record with newly created author, break the loop. 
+Then bunch of exceptions which are required to run a programm.
+
+deleteAuthor METHOD - this method tries to delete an author record by using author ID which is EmailAddr in the relation. EmailAddr (authorEmail) is the parameter list of this method. So the connection statement to the database and DELETE sql statement from AUTHOR relation. I execute the query and then it will catch an Exception and output the error I have received and also another output will be my note why it has not worked. 
+
+When testing the methods in another class, you should create a new Object of Paper and then use the methods using (.) dot notation to call the method and input inside the parameter list appropriate data. 
